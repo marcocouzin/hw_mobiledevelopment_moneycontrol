@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "785922349117",
+    "project_id": "fiap-mba-e2db0",
+    "storage_bucket": "fiap-mba-e2db0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785922349117:android:de2056d238cc751e6d7254",
+        "android_client_info": {
+          "package_name": "br.com.fiap.flutter_mba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785922349117-6n4lf8c0f265h1nm5h4po1a9mu019dur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA08kgyN6tz1MQxyXnTleoiv7JwcL7Ppv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785922349117-6n4lf8c0f265h1nm5h4po1a9mu019dur.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "785922349117-dkgj6k4vvooe6270nbpie3jit50h0301.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.fiap.flutterDesafioVisitcardAula02"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785922349117:android:edb677c6eb8374366d7254",
+        "android_client_info": {
+          "package_name": "br.com.fiap.hw_mobiledevelopment_moneycontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785922349117-6n4lf8c0f265h1nm5h4po1a9mu019dur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA08kgyN6tz1MQxyXnTleoiv7JwcL7Ppv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785922349117-6n4lf8c0f265h1nm5h4po1a9mu019dur.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "785922349117-dkgj6k4vvooe6270nbpie3jit50h0301.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.fiap.flutterDesafioVisitcardAula02"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

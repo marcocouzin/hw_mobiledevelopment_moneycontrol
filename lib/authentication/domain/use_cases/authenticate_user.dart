@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+
+import '../entities/auth_entity.dart';
 
 abstract class AuthenticateUser {
-  Future<UserCredential> authenticateUser();
-  Future<UserCredential> createUser();
+  AuthEntity authenticateUser(String userName, String password);
+  AuthEntity createUser(String userName, String password);
 
 }
