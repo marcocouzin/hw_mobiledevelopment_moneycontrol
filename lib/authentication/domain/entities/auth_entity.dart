@@ -5,5 +5,10 @@ class AuthEntity {
   final String password;
   final AuthError? authError;
 
-  AuthEntity(this.authError, {required this.userName, required this.password});
+  AuthEntity(this.authError,
+      {
+        required this.userName,
+        required this.password
+      }
+  );
 }

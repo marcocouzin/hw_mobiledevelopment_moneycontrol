@@ -1,24 +1,25 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../main_menu_screen.dart';
 import '../../widgets/rounded_button.dart';
 import '../../widgets/rounded_text_field.dart';
 
-class AuthScreen extends StatefulWidget {
+class AuthScreen extends StatelessWidget {
   static const String id = '/auth_screen';
 
+  final String? inputtedEmail;
+  final String? inputtedPassword;
 
-  const AuthScreen({super.key});
+  final Function(String value) onEmailChanged;
+  final Function(String value) onPasswordChanged;
+  final Function() onAuthenticatePressed;
 
-  @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
-  var inputtedEmail = '';
-
-  var inputtedPassword = '';
+  const AuthScreen(
+      {super.key,
+      required this.onEmailChanged,
+      required this.inputtedEmail,
+      required this.inputtedPassword,
+      required this.onAuthenticatePressed,
+      required this.onPasswordChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -42,24 +43,17 @@ class _AuthScreenState extends State<AuthScreen> {
                     RoundedTextField(
                       label: 'Insert your email',
                       textInputType: TextInputType.emailAddress,
-                      onTextChange: (text) {
-                        inputtedEmail = text;
-                      },
+                      onTextChange: (text) => {onEmailChanged(text)},
                     ),
                     const SizedBox(height: 30),
                     RoundedTextField(
                       label: 'Insert your password',
                       obscureText: true,
-                      onTextChange: (text) {
-                        inputtedPassword = text;
-                      },
+                      onTextChange: (text) => {onPasswordChanged(text)},
                     ),
                     const SizedBox(height: 64),
                     RoundedButton(
-                        text: 'Login',
-                        onPressed: () {
-                          authenticateUser(context);
-                        }),
+                        text: 'Login', onPressed: onAuthenticatePressed),
                   ],
                 ),
               ),
@@ -69,32 +63,32 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
-
-  void authenticateUser(BuildContext context) {
-    final firebaseAuth = FirebaseAuth.instance;
-
-    firebaseAuth
-        .signInWithEmailAndPassword(
-        email: inputtedEmail, password: inputtedPassword)
-        .then((userCredentials) {
-      Navigator.pushReplacementNamed(context, MainMenuScreen.id);
-      // Implement the exception flow
-    }).onError((error, stackTrace) {
-      firebaseAuth
-          .createUserWithEmailAndPassword(
-          email: inputtedEmail, password: inputtedPassword)
-          .then((userCredentials) {
-        Navigator.pushReplacementNamed(context, MainMenuScreen.id);
-        // Implement the exception flow
-      }).onError((FirebaseAuthException error, stackTrace) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              error.message ?? 'Ops! Something went wrong',
-            ),
-          ),
-        );
-      });
-    });
-  }
+//
+// void authenticateUser(BuildContext context) {
+//   final firebaseAuth = FirebaseAuth.instance;
+//
+//   firebaseAuth
+//       .signInWithEmailAndPassword(
+//       email: inputtedEmail, password: inputtedPassword)
+//       .then((userCredentials) {
+//     Navigator.pushReplacementNamed(context, MainMenuScreen.id);
+//     // Implement the exception flow
+//   }).onError((error, stackTrace) {
+//     firebaseAuth
+//         .createUserWithEmailAndPassword(
+//         email: inputtedEmail, password: inputtedPassword)
+//         .then((userCredentials) {
+//       Navigator.pushReplacementNamed(context, MainMenuScreen.id);
+//       // Implement the exception flow
+//     }).onError((FirebaseAuthException error, stackTrace) {
+//       ScaffoldMessenger.of(context).showSnackBar(
+//         SnackBar(
+//           content: Text(
+//             error.message ?? 'Ops! Something went wrong',
+//           ),
+//         ),
+//       );
+//     });
+//   });
+// }
 }
