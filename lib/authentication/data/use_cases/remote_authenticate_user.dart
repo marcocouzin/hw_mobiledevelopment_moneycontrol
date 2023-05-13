@@ -8,7 +8,7 @@ class RemoteAuthenticateUser extends AuthenticateUser {
   @override
   Future<AuthError> authenticateUser(String userName, String password) async {
     try {
-      final credential = await firebaseAuth
+      await firebaseAuth
           .signInWithEmailAndPassword(email: userName, password: password)
           .then((value) => {
                 print("Everything is OK"),
