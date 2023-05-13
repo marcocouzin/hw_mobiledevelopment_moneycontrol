@@ -21,7 +21,8 @@ class AuthContainer extends BlocBuilder<AuthCubit, AuthCubitState> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      state.userState.errorMessage,
+                      "${state.userState.errorCode} - "
+                      "${state.userState.errorMessage}",
                     ),
                   ),
                 );

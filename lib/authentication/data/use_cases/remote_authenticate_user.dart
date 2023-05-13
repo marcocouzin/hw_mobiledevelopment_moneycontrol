@@ -12,33 +12,26 @@ class RemoteAuthenticateUser extends AuthenticateUser {
           .signInWithEmailAndPassword(email: userName, password: password)
           .then((value) => {
                 print("Everything is OK"),
-                FirebaseAuth.instance.authStateChanges().listen((User? user) {
-                  if (user == null) {
-                    print('User is currently signed out!');
-                  } else {
-                    print('User is signed in!');
-                  }
-                })
+                // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+                //   if (user == null) {
+                //     print('User is currently signed out!');
+                //   } else {
+                //     print('User is signed in!');
+                //   }
+                // })
               });
       return AuthError(
           errorCode: "000", errorMessage: "User was authenticated");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print(e.code);
-        print('No user found for that email.');
         return AuthError(
             errorCode: e.code,
             errorMessage: e.message ?? "Ops! Something went wrong");
       } else if (e.code == 'wrong-password') {
-        print(e.code);
-        print('Wrong password provided for that user.');
         return AuthError(
             errorCode: e.code,
             errorMessage: e.message ?? "Ops! Something went wrong");
       } else {
-        print('------------------------------------------');
-        print(e.code);
-        print(e.message ?? 'Ops! Something went wrong');
         return AuthError(
             errorCode: e.code,
             errorMessage: e.message ?? "Ops! Something went wrong");
