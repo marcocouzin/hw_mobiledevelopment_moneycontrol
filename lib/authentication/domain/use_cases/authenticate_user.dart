@@ -1,8 +1,6 @@
-
-import '../entities/auth_entity.dart';
+import '../entities/auth_error.dart';
 
 abstract class AuthenticateUser {
-  Future<void> authenticateUser(String? userName, String? password);
-  Future<AuthEntity> createUser(String userName, String password);
-
+  Future<AuthError> authenticateUser(String userName, String password);
+  // Future<AuthError> createUser(String userName, String password);
 }

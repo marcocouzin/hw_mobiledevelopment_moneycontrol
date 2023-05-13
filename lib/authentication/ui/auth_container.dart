@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit_state.dart';
@@ -17,6 +18,13 @@ class AuthContainer extends BlocBuilder<AuthCubit, AuthCubitState> {
               },
               onAuthenticatePressed: () {
                 AuthCubitProvider.of(context).authenticator();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      state.userState.errorMessage,
+                    ),
+                  ),
+                );
               });
         });
 }

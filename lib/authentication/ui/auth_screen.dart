@@ -13,13 +13,14 @@ class AuthScreen extends StatelessWidget {
   final Function(String value) onPasswordChanged;
   final Function() onAuthenticatePressed;
 
-  const AuthScreen(
-      {super.key,
-      required this.onEmailChanged,
-      required this.inputtedEmail,
-      required this.inputtedPassword,
-      required this.onAuthenticatePressed,
-      required this.onPasswordChanged});
+  const AuthScreen({
+    super.key,
+    required this.onEmailChanged,
+    required this.inputtedEmail,
+    required this.inputtedPassword,
+    required this.onAuthenticatePressed,
+    required this.onPasswordChanged,
+  });
 
   @override
   Widget build(BuildContext context) {

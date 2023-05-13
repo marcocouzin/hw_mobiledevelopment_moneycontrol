@@ -1,19 +1,17 @@
-import '../domain/entities/auth_entity.dart';
+import 'package:hw_mobiledevelopment_moneycontrol/authentication/domain/entities/auth_error.dart';
 
 class AuthCubitState {
-  final AuthEntity? userState;
+  final AuthError userState;
   final String? inputtedEmail;
   final String? inputtedPassword;
 
-  const AuthCubitState({this.userState, this.inputtedEmail, this.inputtedPassword});
+  const AuthCubitState(
+      {required this.userState, this.inputtedEmail, this.inputtedPassword});
 
-  AuthCubitState copyWith({
-    AuthEntity? userState,
-    String? email,
-    String? password}) =>
+  AuthCubitState copyWith(
+          {AuthError? userState, String? email, String? password}) =>
       AuthCubitState(
           userState: userState ?? this.userState,
           inputtedEmail: email ?? inputtedEmail,
-          inputtedPassword: password ?? inputtedPassword
-      );
+          inputtedPassword: password ?? inputtedPassword);
 }

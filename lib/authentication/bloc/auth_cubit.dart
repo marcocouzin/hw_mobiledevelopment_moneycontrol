@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit_state.dart';
-import 'package:hw_mobiledevelopment_moneycontrol/authentication/domain/entities/auth_entity.dart';
+import 'package:hw_mobiledevelopment_moneycontrol/authentication/domain/entities/auth_error.dart';
 
 import '../data/use_cases/remote_authenticate_user.dart';
 import '../domain/use_cases/authenticate_user.dart';
@@ -20,19 +20,18 @@ class AuthCubit extends Cubit<AuthCubitState> {
   }
 
   Future<void> authenticator() async {
-    // AuthEntity authEntity = await user.authenticateUser(state.inputtedEmail, state.inputtedPassword);
-    await user.authenticateUser(state.inputtedEmail, state.inputtedPassword);
-    // emit(state.copyWith(userState: authEntity));
+    AuthError ret = await user.authenticateUser(
+        state.inputtedEmail ?? "", state.inputtedPassword ?? "");
+    emit(state.copyWith(userState: ret));
   }
 }
-
 
 class AuthCubitProvider extends BlocProvider<AuthCubit> {
   AuthCubitProvider({super.key, Widget? child})
       : super(
             create: (context) => AuthCubit(
                 AuthCubitState(
-                    userState: AuthEntity(null, userName: '', password: '')),
+                    userState: AuthError(errorCode: "000", errorMessage: "")),
                 user: RemoteAuthenticateUser()),
             child: child);
 
