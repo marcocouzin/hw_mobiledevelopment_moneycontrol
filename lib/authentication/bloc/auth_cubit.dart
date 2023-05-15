@@ -19,9 +19,19 @@ class AuthCubit extends Cubit<AuthCubitState> {
     emit(state.copyWith(password: value));
   }
 
+  void updateConfirmPasswordValue(String value) {
+    emit(state.copyWith(confirmPassword: value));
+  }
+
   Future<void> authenticator() async {
     AuthError ret = await user.authenticateUser(
         state.inputtedEmail ?? "", state.inputtedPassword ?? "");
+    emit(state.copyWith(userState: ret));
+  }
+
+  Future<void> createUser() async {
+    AuthError ret = await user.createUser(
+        state.inputtedEmail ?? '', state.inputtedPassword ?? '');
     emit(state.copyWith(userState: ret));
   }
 }

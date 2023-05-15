@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit_state.dart';
-import 'package:hw_mobiledevelopment_moneycontrol/authentication/ui/auth_screen.dart';
+
+import 'auth_screen.dart';
 
 class AuthContainer extends BlocBuilder<AuthCubit, AuthCubitState> {
   AuthContainer({super.key})

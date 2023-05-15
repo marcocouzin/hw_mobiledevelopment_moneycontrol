@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/rounded_button.dart';
-import '../../widgets/rounded_text_field.dart';
+import '../../../widgets/rounded_button.dart';
+import '../../../widgets/rounded_text_field.dart';
+import '../account/create_account_screen.dart';
 
 class AuthScreen extends StatelessWidget {
   static const String id = '/auth_screen';
@@ -18,8 +19,8 @@ class AuthScreen extends StatelessWidget {
     required this.onEmailChanged,
     required this.inputtedEmail,
     required this.inputtedPassword,
-    required this.onAuthenticatePressed,
     required this.onPasswordChanged,
+    required this.onAuthenticatePressed,
   });
 
   @override
@@ -46,15 +47,45 @@ class AuthScreen extends StatelessWidget {
                       textInputType: TextInputType.emailAddress,
                       onTextChange: (text) => {onEmailChanged(text)},
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
                     RoundedTextField(
                       label: 'Insert your password',
                       obscureText: true,
                       onTextChange: (text) => {onPasswordChanged(text)},
                     ),
-                    const SizedBox(height: 64),
-                    RoundedButton(
-                        text: 'Login', onPressed: onAuthenticatePressed),
+                    const SizedBox(height: 70),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      height: 40,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, CreateAccountScreen.id);
+                              },
+                              child: Container(
+                                alignment: AlignmentDirectional.center,
+                                child: const Text(
+                                  'Create Account',
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.blue),
+                                ),
+                              )),
+                          // const SizedBox(width: 150),
+                          Container(
+                            width: 120,
+                          ),
+                          Expanded(
+                            child: RoundedButton(
+                                text: 'Login',
+                                onPressed: onAuthenticatePressed),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -64,32 +95,4 @@ class AuthScreen extends StatelessWidget {
       ),
     );
   }
-//
-// void authenticateUser(BuildContext context) {
-//   final firebaseAuth = FirebaseAuth.instance;
-//
-//   firebaseAuth
-//       .signInWithEmailAndPassword(
-//       email: inputtedEmail, password: inputtedPassword)
-//       .then((userCredentials) {
-//     Navigator.pushReplacementNamed(context, MainMenuScreen.id);
-//     // Implement the exception flow
-//   }).onError((error, stackTrace) {
-//     firebaseAuth
-//         .createUserWithEmailAndPassword(
-//         email: inputtedEmail, password: inputtedPassword)
-//         .then((userCredentials) {
-//       Navigator.pushReplacementNamed(context, MainMenuScreen.id);
-//       // Implement the exception flow
-//     }).onError((FirebaseAuthException error, stackTrace) {
-//       ScaffoldMessenger.of(context).showSnackBar(
-//         SnackBar(
-//           content: Text(
-//             error.message ?? 'Ops! Something went wrong',
-//           ),
-//         ),
-//       );
-//     });
-//   });
-// }
 }

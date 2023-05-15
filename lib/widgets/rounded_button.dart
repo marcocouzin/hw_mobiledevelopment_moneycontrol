@@ -26,22 +26,21 @@ class RoundedButton extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         borderRadius: BorderRadius.circular(25),
-        child: ListTile(
-          // onTap: onPressed, // Click function
-          leading: icon != null
-              ? Icon(
-                  icon,
-                  color: textColor,
-                )
-              : null,
-          title: Text(
-            text,
-            textAlign: icon == null ? TextAlign.center : TextAlign.start,
-            style: TextStyle(
-              color: textColor,
-            ),
-          ),
-        ),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                alignment: AlignmentDirectional.center,
+                child: Text(
+                  text,
+                  textAlign: icon == null ? TextAlign.center : TextAlign.start,
+                  style: TextStyle(
+                    color: textColor,
+                  ),
+                ),
+              )
+            ]),
       ),
     );
   }

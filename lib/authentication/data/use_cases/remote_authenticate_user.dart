@@ -39,16 +39,17 @@ class RemoteAuthenticateUser extends AuthenticateUser {
     }
   }
 
-  // @override
-  // Future<AuthError> createUser(String userName, String password) {
-  //   firebaseAuth
-  //       .createUserWithEmailAndPassword(email: userName, password: password)
-  //       .then((value) =>
-  //           {AuthEntity(null, userName: userName, password: password)})
-  //       .onError((error, stackTrace) => {
-  //             AuthEntity(error as AuthError?,
-  //                 userName: userName, password: password)
-  //           });
-  //   throw Exception("Something went wrong");
-  // }
+  @override
+  Future<AuthError> createUser(String userName, String password) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: userName, password: password);
+      return AuthError(
+          errorCode: "OK", errorMessage: "User was created successfully");
+    } on FirebaseAuthException catch (e) {
+      return AuthError(
+          errorCode: e.code,
+          errorMessage: e.message ?? "Ops! Something went wrong");
+    }
+  }
 }
