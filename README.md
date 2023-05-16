@@ -1,15 +1,12 @@
-# hw_mobiledevelopment_moneycontrol
+# Controle de Despesas
 
-A new Flutter project.
+## Forma de uso
 
-## Getting Started
+O usuário poderá:
+- Criar um usuário, utilizando seu e-mail, cadastrando uma senha para acesso;
+- Nos próximos acessos o usuário precisará apenas fazer o login com o seu e-mail e senha;
+- O usuário, após o login verá a relação das suas últimas despesas.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
