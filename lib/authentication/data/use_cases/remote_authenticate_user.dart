@@ -25,7 +25,7 @@ class RemoteAuthenticateUser extends AuthenticateUser {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: userName, password: password);
       return AuthError(
-          errorCode: "OK", errorMessage: "User was created successfully");
+          errorCode: "000", errorMessage: "User was created successfully");
     } on FirebaseAuthException catch (e) {
       return AuthError(
           errorCode: e.code,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit_state.dart';
 
+import '../../../bills/ui/expenses_screen.dart';
 import 'create_account_screen.dart';
 
 class CreateAccountContainer extends BlocBuilder<AuthCubit, AuthCubitState> {
@@ -42,14 +43,14 @@ class CreateAccountContainer extends BlocBuilder<AuthCubit, AuthCubitState> {
                 } else {
                   AuthCubitProvider.of(context).createUser();
 
-                  if (state.userState.errorMessage.isNotEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(state.userState.errorMessage),
-                      ),
+
+                  if (state.userState.errorCode == '000'){
+                    Navigator.pushNamed(
+                      context,
+                      ExpensesScreen.id,
                     );
                   }
-                  else if(state.userState.errorMessage == "OK") {
+                  else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(state.userState.errorMessage),
