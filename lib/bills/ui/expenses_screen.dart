@@ -4,15 +4,18 @@ import 'package:hw_mobiledevelopment_moneycontrol/bills/domain/entities/expenses
 class ExpensesScreen extends StatelessWidget {
   static const String id = '/expenses_screen';
 
+  final ExpensesScreenArguments arguments;
   final List<ExpensesEntity> expensesList;
 
-  const ExpensesScreen({super.key, required this.expensesList});
+  const ExpensesScreen(
+      {super.key, required this.expensesList, required this.arguments});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome!', style: TextStyle(color: Colors.black)),
+        title: const Text('Welcome!',
+            style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: BackButton(color: Theme.of(context).primaryColor),
@@ -67,4 +70,10 @@ class ExpensesScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class ExpensesScreenArguments {
+  final String userName;
+
+  ExpensesScreenArguments(this.userName);
 }

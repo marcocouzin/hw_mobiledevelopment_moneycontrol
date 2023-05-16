@@ -7,6 +7,8 @@ import '../bloc/expenses_cubit_state.dart';
 class ExpensesContainer extends BlocBuilder<ExpensesCubit, ExpensesCubitState> {
   ExpensesContainer({super.key})
       : super(builder: (context, state) {
-          return ExpensesScreen(expensesList: state.expensesList);
+          return ExpensesScreen(
+              expensesList: state.expensesList,
+              arguments: ExpensesScreenArguments(""));
         });
 }

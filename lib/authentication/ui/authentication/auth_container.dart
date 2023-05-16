@@ -20,13 +20,11 @@ class AuthContainer extends BlocBuilder<AuthCubit, AuthCubitState> {
               },
               onAuthenticatePressed: () {
                 AuthCubitProvider.of(context).authenticator();
-                if (state.userState.errorCode == '000'){
-                  Navigator.pushNamed(
-                    context,
-                    ExpensesScreen.id,
-                  );
-                }
-                else {
+                if (state.userState.errorCode == '000') {
+                  Navigator.pushNamed(context, ExpensesScreen.id,
+                      arguments:
+                          ExpensesScreenArguments(state.inputtedEmail ?? ''));
+                } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.userState.errorMessage),
