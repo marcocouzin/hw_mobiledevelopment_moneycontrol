@@ -5,6 +5,7 @@ class AuthCubitState {
   final String? inputtedEmail;
   final String? inputtedPassword;
   final String? inputtedConfirmPassword;
+  final bool loading = true;
 
   const AuthCubitState(
       {required this.userState,

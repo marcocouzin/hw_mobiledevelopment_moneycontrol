@@ -34,6 +34,10 @@ class AuthCubit extends Cubit<AuthCubitState> {
         state.inputtedEmail ?? '', state.inputtedPassword ?? '');
     emit(state.copyWith(userState: ret));
   }
+
+  Future<bool> checkLogin() {
+    return user.checkLogin();
+  }
 }
 
 class AuthCubitProvider extends BlocProvider<AuthCubit> {

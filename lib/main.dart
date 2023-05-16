@@ -2,10 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/ui/authentication/auth_container.dart';
+import 'package:hw_mobiledevelopment_moneycontrol/authentication/ui/splashscreen/splash_container.dart';
+import 'package:hw_mobiledevelopment_moneycontrol/authentication/ui/splashscreen/splash_screen.dart';
+import 'package:hw_mobiledevelopment_moneycontrol/bills/ui/expenses_screen.dart';
 
 import 'authentication/ui/account/create_account_container.dart';
 import 'authentication/ui/account/create_account_screen.dart';
 import 'authentication/ui/authentication/auth_screen.dart';
+import 'bills/bloc/expenses_cubit.dart';
+import 'bills/ui/expenses_container.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -26,14 +31,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      // home: const AuthScreen(),
-      initialRoute: AuthScreen.id,
+      initialRoute: ExpensesScreen.id,
       routes: {
         AuthScreen.id: (context) => AuthCubitProvider(child: AuthContainer()),
-        CreateAccountScreen.id: (context) => AuthCubitProvider(child: CreateAccountContainer()),
+        SplashScreen.id: (context) =>
+            AuthCubitProvider(child: SplashContainer()),
+        CreateAccountScreen.id: (context) =>
+            AuthCubitProvider(child: CreateAccountContainer()),
+        ExpensesScreen.id: (context) =>
+            ExpensesCubitProvider(child: ExpensesContainer()),
       },
     );
   }
 }
-
-

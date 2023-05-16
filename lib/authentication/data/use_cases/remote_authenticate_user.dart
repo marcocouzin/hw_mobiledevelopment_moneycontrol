@@ -8,34 +8,14 @@ class RemoteAuthenticateUser extends AuthenticateUser {
   @override
   Future<AuthError> authenticateUser(String userName, String password) async {
     try {
-      await firebaseAuth
-          .signInWithEmailAndPassword(email: userName, password: password)
-          .then((value) => {
-                print("Everything is OK"),
-                // FirebaseAuth.instance.authStateChanges().listen((User? user) {
-                //   if (user == null) {
-                //     print('User is currently signed out!');
-                //   } else {
-                //     print('User is signed in!');
-                //   }
-                // })
-              });
+      await firebaseAuth.signInWithEmailAndPassword(
+          email: userName, password: password);
       return AuthError(
           errorCode: "000", errorMessage: "User was authenticated");
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        return AuthError(
-            errorCode: e.code,
-            errorMessage: e.message ?? "Ops! Something went wrong");
-      } else if (e.code == 'wrong-password') {
-        return AuthError(
-            errorCode: e.code,
-            errorMessage: e.message ?? "Ops! Something went wrong");
-      } else {
-        return AuthError(
-            errorCode: e.code,
-            errorMessage: e.message ?? "Ops! Something went wrong");
-      }
+      return AuthError(
+          errorCode: e.code,
+          errorMessage: e.message ?? "Ops! Something went wrong");
     }
   }
 
@@ -50,6 +30,17 @@ class RemoteAuthenticateUser extends AuthenticateUser {
       return AuthError(
           errorCode: e.code,
           errorMessage: e.message ?? "Ops! Something went wrong");
+    }
+  }
+
+  @override
+  Future<bool> checkLogin() async {
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
