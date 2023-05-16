@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: ExpensesScreen.id,
+      initialRoute: AuthScreen.id,
       routes: {
         AuthScreen.id: (context) => AuthCubitProvider(child: AuthContainer()),
         SplashScreen.id: (context) =>

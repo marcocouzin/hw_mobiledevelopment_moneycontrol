@@ -27,7 +27,6 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: InkWell(
-        // On the onFocus action, restore the initial fields state
         overlayColor: MaterialStateProperty.all(Colors.transparent),
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -36,8 +35,6 @@ class AuthScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Center(
-              //  Use SingleChildScrollView when you need a scroll
-              // For example if you have many field on the screen
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +71,6 @@ class AuthScreen extends StatelessWidget {
                                       color: Colors.blue),
                                 ),
                               )),
-                          // const SizedBox(width: 150),
                           Container(
                             width: 120,
                           ),

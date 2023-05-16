@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit.dart';
 import 'package:hw_mobiledevelopment_moneycontrol/authentication/bloc/auth_cubit_state.dart';
+import 'package:hw_mobiledevelopment_moneycontrol/bills/ui/expenses_screen.dart';
 
 import 'auth_screen.dart';
 
@@ -19,14 +20,19 @@ class AuthContainer extends BlocBuilder<AuthCubit, AuthCubitState> {
               },
               onAuthenticatePressed: () {
                 AuthCubitProvider.of(context).authenticator();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      "${state.userState.errorCode} - "
-                      "${state.userState.errorMessage}",
+                if (state.userState.errorCode == '000'){
+                  Navigator.pushNamed(
+                    context,
+                    ExpensesScreen.id,
+                  );
+                }
+                else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.userState.errorMessage),
                     ),
-                  ),
-                );
+                  );
+                }
               });
         });
 }
