@@ -3,6 +3,7 @@ import 'package:hw_mobiledevelopment_moneycontrol/bills/domain/entities/expenses
 
 class ExpensesScreen extends StatelessWidget {
   static const String id = '/expenses_screen';
+
   final List<ExpensesEntity> expensesList;
 
   const ExpensesScreen({super.key, required this.expensesList});
@@ -11,6 +12,7 @@ class ExpensesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Welcome!', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: BackButton(color: Theme.of(context).primaryColor),
@@ -30,27 +32,30 @@ class ExpensesScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          expense.description,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        Text(
-                          expense.value.toString(),
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          expense.payment,
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            expense.description,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          Text(
+                            expense.value.toString(),
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            expense.payment,
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(width: 8),
